@@ -1,0 +1,43 @@
+﻿<Window x:Class="Search_Engine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Search_Engine"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Search Engine" Height="500" Width="700">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Margin="10"  Name="TB" FontSize="24"  materialDesign:HintAssist.Hint="Enter the text here" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <Button Grid.Column="1" Content="Search" Click="Search"/>
+            </Grid>
+            
+            <DataGrid Visibility="Hidden" Name="G" Grid.Row="1">
+                
+            </DataGrid>
+            <ListView Grid.Row="1" Margin="10" Name="lvDataBinding">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <materialDesign:Card>
+                        <StackPanel>
+                            <TextBlock Margin="5" Text="{Binding Title}" FontWeight="Bold" />
+                                <TextBox Margin="5" IsReadOnly="True" MouseDoubleClick="LinkClicked" Text="{Binding URL}" TextDecorations="Underline" Foreground="Blue"  Cursor="Hand" />
+                            <TextBlock Margin="5,5,5,20" Text="{Binding Description}" FontWeight="Bold" />
+                        </StackPanel>
+                        </materialDesign:Card>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>
